@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { YamlVisualizer } from "../components/YamlVisualizer";
-import { parseYaml } from "../utils/yamlParser";
-import { YamlData } from "../types/yaml";
+import { YamlVisualizer } from "@/components/YamlVisualizer";
+import { parseYaml } from "@/utils/yamlParser";
+import { YamlData } from "@/types/yaml";
 import debounce from "lodash.debounce";
 
 /**

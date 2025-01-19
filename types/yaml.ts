@@ -35,16 +35,12 @@ export interface YamlStructure {
  * @interface YamlData
  * @property {Object} src - プロジェクトのルートディレクトリ
  * @property {YamlStructure} src.structure.yaml - プロジェクトの構造定義ファイル
- * @property {Object.<string, YamlFile|YamlStructure>} src - その他のファイルやディレクトリ
+ * @property {Object.<string, YamlFile|YamlStructure|DirectoryContent>} src - その他のファイルやディレクトリ
  */
 export interface YamlData {
   src: {
     "structure.yaml": YamlStructure;
-    [key: string]:
-      | {
-          [key: string]: YamlFile;
-        }
-      | YamlStructure;
+    [key: string]: YamlFile | YamlStructure | DirectoryContent;
   };
 }
 
@@ -93,4 +89,13 @@ export interface FileEdge {
   id: string;
   source: string;
   target: string;
+}
+
+/**
+ * ディレクトリの内容を表すインターフェース
+ * @interface DirectoryContent
+ * @property {Object.<string, YamlFile|DirectoryContent>} [key: string] - ディレクトリ内のファイルやサブディレクトリ
+ */
+export interface DirectoryContent {
+  [key: string]: YamlFile | DirectoryContent;
 }

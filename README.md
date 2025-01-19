@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# To Kamui Team
 
-## Getting Started
+## 機能
 
-First, run the development server:
+- yaml ファイルをテキストエリアに入力して、右側にファイルノードとエッジを表示（ノードはファイル名、conetnt, agent 表示）
+- yaml ファイルをテキストエリアに入力して、使用されているエージェントを画面下側に表示
+- テキストエリアの yaml ファイルを変更して、リアルタイムでグラフを更新（yaml の構文エラーの場合上部にエラーを表示。ただし、yaml の構文エラーをチェックしているだけで、グリモワールスキーマのチェックではない）
+- リセットボタンでグラフリセット（リセットを押さないと、前回のグラフが残ってしまう）
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## できないこと
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- フォルダの表現。現在はファイルのみをノードで表現している
+- グリモワールとしてのスキーマチェック
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## フォルダ構造
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- app: メインのファイル
+- components: グラフ表示コンポーネント
+- constant: 定数
+- types: 型
+- utils: yaml 解析の関数
 
-## Learn More
+## その他メモ
 
-To learn more about Next.js, take a look at the following resources:
+1. constant フォルダに定数を少しまとめています。
+   ノードの色指定と、ノードの横幅、ノード間の間隔を定義しています。
+2. 今は一つのページとして実装していますが、page.tsx から YamlVisualizer.tsx に送る props`yamlData`をグリモワール図書館に格納されている yaml ファイルから取得するようにすれば、組み込めると思います。
+3. 依存パッケージは package.json をご確認ください
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ※注意
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+本番環境での動作は確認していません。厳密なテストはしていません（動作確認レベルです）。
+ビルド/デプロイ時のエラーや本番環境でのエラーが発生する可能性がございます。ご注意ください。

@@ -13,8 +13,12 @@ import ReactFlow, {
   NodeProps,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { YamlData } from "../types/yaml";
-import { generateNodesAndEdges, getExtensionColor } from "../utils/yamlParser";
+import { YamlData } from "@/types/yaml";
+import { generateNodesAndEdges, getExtensionColor } from "@/utils/yamlParser";
+import {
+  defaultHorizontalSpacing,
+  defaultVerticalSpacing,
+} from "@/constant/constant";
 
 /**
  * カスタムノードコンポーネント
@@ -103,8 +107,8 @@ function YamlVisualizerContent({ yamlData }: { yamlData: YamlData }) {
    * グリッド状にノードを配置
    */
   const handleAutoLayout = useCallback(() => {
-    const VERTICAL_SPACING = 200; // 垂直方向の間隔
-    const HORIZONTAL_SPACING = 400; // 水平方向の間隔
+    const VERTICAL_SPACING = defaultVerticalSpacing; // 垂直方向の間隔
+    const HORIZONTAL_SPACING = defaultHorizontalSpacing; // 水平方向の間隔
     const newNodes = nodes.map((node, index) => {
       const column = index % 3;
       const row = Math.floor(index / 3);
@@ -144,7 +148,7 @@ function YamlVisualizerContent({ yamlData }: { yamlData: YamlData }) {
         {/* 自動レイアウトボタン */}
         <button
           onClick={handleAutoLayout}
-          className="absolute top-4 right-4 z-10 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md"
+          className="absolute top-16 right-4 z-10 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md"
         >
           自動レイアウト
         </button>
