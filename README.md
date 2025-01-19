@@ -1,5 +1,11 @@
 # To Kamui Team
 
+## 起動方法
+```sh
+npm install
+npm run dev
+```
+
 ## 機能
 
 - yaml ファイルをテキストエリアに入力して、右側にファイルノードとエッジを表示（ノードはファイル名、conetnt, agent 表示）
